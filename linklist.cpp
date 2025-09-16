@@ -55,14 +55,12 @@ public:
         delete temp;
     }
 
-   
     void deleteAtEnd() {
         if (head == NULL) {
             cout << "List is empty. Cannot delete.\n";
             return;
         }
 
-        // If only one node
         if (head->next == NULL) {
             cout << "Node " << head->data << " deleted from end.\n";
             delete head;
@@ -70,7 +68,6 @@ public:
             return;
         }
 
-        // Traverse to second last node
         Node* temp = head;
         while (temp->next->next != NULL) {
             temp = temp->next;
@@ -111,6 +108,23 @@ public:
 
         cout << "Value " << key << " not found in the list.\n";
     }
+
+    // ✅ New function to reverse the linked list
+    void reverse() {
+        Node* prev = NULL;
+        Node* current = head;
+        Node* next = NULL;
+
+        while (current != NULL) {
+            next = current->next;     // store next node
+            current->next = prev;     // reverse link
+            prev = current;           // move prev ahead
+            current = next;           // move current ahead
+        }
+
+        head = prev;
+        cout << "Linked list reversed.\n";
+    }
 };
 
 int main() {
@@ -133,6 +147,10 @@ int main() {
 
     list.search(30);
     list.search(100);
+
+    // 🔁 Reverse the list
+    list.reverse();
+    list.display(); // 40 -> 30 -> 20 -> NULL
 
     return 0;
 }
