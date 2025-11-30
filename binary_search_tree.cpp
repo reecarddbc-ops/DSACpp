@@ -76,3 +76,19 @@ int main() {
 
     return 0;
 }
+
+// bool search(Node* root, int key) {
+//         // Base case: tree is empty or key found
+//         if (root == NULL)
+//             return false;
+
+//         if (root->data == key)
+//             return true;
+
+//         // If key is smaller, search left
+//         if (key < root->data)
+//             return search(root->left, key);
+        
+//         // If key is larger, search right
+//         return search(root->right, key);
+//     }
